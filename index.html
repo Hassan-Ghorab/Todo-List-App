@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Todo list app to manage your tasks and to help you focus and finish your work"
+    />
+    <link
+      id="favicon"
+      rel="icon"
+      sizes="64x64"
+      type="image/png"
+      href="./fontello/dark-favicon-icon.png"
+    />
+    <title>Todo List App</title>
+    <link rel="stylesheet" href="fontello/css/fontello.css" />
+    <link rel="stylesheet" href="style.css" />
+    <script src="./js/modal.js" defer></script>
+    <script src="./js/script.js" defer></script>
+  </head>
+  <body class="darkTheme">
+    <h1 class="main-title">Your Todos</h1>
+    <div id="container" class="container">
+      <div class="todo-head flex">
+        <div class="day-mood">
+          <i id="day-mood-toggler" class="icon-moon-inv"></i>
+        </div>
+
+        <div id="add-task-icon" class="add-task-icon">
+          <i class="icon-plus"></i>
+        </div>
+      </div>
+
+      <div id="tasks-container" class="todo-body"></div>
+    </div>
+
+    <div id="modal-container" class="ds-none-toggler"></div>
+  </body>
+</html>
