@@ -20,6 +20,6 @@ You can view the live demo of the project at
 - It's working on all screens.
 
 #Resources
-[tarmeez academy Todo list project](https://www.youtube.com/watch?v=VgLkex5tpYI&list=PLYyqC4bNbCIeLEjcSPO61bsGPKEvYceb0&index=89)
+[tarmeez academy Todo list project](https://www.youtube.com/watch?v=VgLkex5tpYI)
 
 
