@@ -270,14 +270,14 @@ dayMoodToggler.addEventListener("click", (e) => {
 function darkTheme() {
   localStorage.setItem("theme", "dark");
   document.body.classList.add("darkTheme");
-  favicon.href = "../favicons/light-favicon-icon.png";
+  favicon.href = "favicons/light-favicon-icon.png";
   dayMoodToggler.className = "icon-sun-inv";
 }
 
 function lightTheme() {
   localStorage.setItem("theme", null);
   dayMoodToggler.className = "icon-moon-inv";
-  favicon.href = "../favicons/dark-favicon-icon.png";
+  favicon.href = "favicons/dark-favicon-icon.png";
   document.body.classList.remove("darkTheme");
 }
 
