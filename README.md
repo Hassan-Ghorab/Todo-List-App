@@ -3,7 +3,7 @@ This project is Todo List App built with HTML, CSS, and Vanilla Javascript.
 
 # Live Demo
 You can view the live demo of the project at 
-[Todo List App](https://hassan-ghorab.github.io/Hassan-Ghorab-Frontend-Mentor-huddle-landing-page-with-curved-sections/)
+[Todo List App](https://hassan-ghorab.github.io/Todo-List-App/)
 
 # Technologies Used
 - HTML
