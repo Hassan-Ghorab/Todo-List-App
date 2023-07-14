@@ -150,6 +150,10 @@ button {
   border-color: var(--completed-border-color);
 }
 
+.completed-task-title {
+  text-decoration:line-through  .2rem #000;
+}
+
 .task-operations .icon-cancel-circle {
   color: var(--danger-color);
 }

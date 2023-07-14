@@ -15,7 +15,9 @@ function renderTasks() {
     let newTask = `
     <div class="todo-item flex ${tasksArray[i].isCompleted ? "completed" : ""}">
     <div class="task-info">
-      <h3>${tasksArray[i].title}</h3>
+      <h3 class="${tasksArray[i].isCompleted ? "completed-task-title" : ""}">${
+      tasksArray[i].title
+    }</h3>
       <i class="icon-calendar history-icon"
         ><span class="history">${tasksArray[i].date}</span></i
       >
