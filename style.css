@@ -57,7 +57,7 @@ button {
 /* Global Styles */
 
 .main-title {
-  margin: 4rem 0;
+  margin: 2rem 0 4rem;
   font-size: 3rem;
 }
 
@@ -151,7 +151,7 @@ button {
 }
 
 .completed-task-title {
-  text-decoration:line-through  .2rem #000;
+  text-decoration: line-through 0.2rem #000;
 }
 
 .task-operations .icon-cancel-circle {
@@ -268,6 +268,14 @@ button {
 }
 
 /* Media */
+
+@media (max-width: 767px) {
+  .main-title {
+    margin: 2rem 0;
+    font-size: 2rem;
+  }
+}
+
 @media (max-width: 290px) {
   .todo-item {
     flex-direction: column;
