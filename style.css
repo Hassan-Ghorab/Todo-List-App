@@ -29,7 +29,7 @@ body {
   transition: all 0.5s;
 }
 
-body.darkTheme {
+body.light-theme {
   --bg-color: rgb(227, 217, 198);
   --modal-color: rgb(177, 140, 73);
   --shadow-color: rgb(177, 140, 73);

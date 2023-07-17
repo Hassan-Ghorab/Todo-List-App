@@ -263,28 +263,28 @@ document.addEventListener("keydown", (evt) => {
 // Dark & Light Theme
 dayMoodToggler.addEventListener("click", (e) => {
   if (e.target.classList.contains("icon-moon-inv")) {
-    darkTheme();
-  } else {
     lightTheme();
+  } else {
+    darkTheme();
   }
 });
 
-function darkTheme() {
-  localStorage.setItem("theme", "dark");
-  document.body.classList.add("darkTheme");
+function lightTheme() {
+  localStorage.setItem("theme", "light");
+  document.body.classList.add("light-theme");
   favicon.href = "favicons/light-favicon-icon.png";
   dayMoodToggler.className = "icon-sun-inv";
 }
 
-function lightTheme() {
+function darkTheme() {
   localStorage.setItem("theme", null);
   dayMoodToggler.className = "icon-moon-inv";
   favicon.href = "favicons/dark-favicon-icon.png";
-  document.body.classList.remove("darkTheme");
+  document.body.classList.remove("light-theme");
 }
 
-if (localStorage.getItem("theme") === "dark") {
-  darkTheme();
-} else {
+if (localStorage.getItem("theme") === "light") {
   lightTheme();
+} else {
+  darkTheme();
 }
