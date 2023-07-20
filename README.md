@@ -1,4 +1,4 @@
-﻿# Todo-List-App
+﻿# Todo List App
 This project is Todo List App built with HTML, CSS, and Vanilla Javascript.
 
 # Live Demo
