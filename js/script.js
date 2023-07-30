@@ -5,6 +5,7 @@ const dayMoodToggler = document.getElementById("day-mood-toggler");
 const favicon = document.getElementById("favicon");
 
 let tasksArray = JSON.parse(localStorage.getItem("tasks")) ?? [];
+const historyPattern = /((0[1-9]|[12]\d|3[01])\/(0[1-9]|1[0-2])\/[12]\d{3})/;
 
 // Render tasks in the page
 function renderTasks() {
@@ -71,7 +72,14 @@ addTaskIcon.addEventListener("click", (e) => {
       placeholder="Add task!"
       required
       />`,
-    `<p class="message ds-none-toggler">You must write something here</p>`,
+    `<input
+      type="text"
+      id="add-task-input-history"
+      class="input-text"
+      placeholder="History: 00/00/0000"
+      required
+      />`,
+    `<p class="message ds-none-toggler">Write a title and History format: 00/00/0000</p>`,
     `adding-task-confirmation`,
     "",
     `Add Task`
@@ -79,23 +87,18 @@ addTaskIcon.addEventListener("click", (e) => {
 
   // Add new task to tasksArray
   function addNewTask() {
-    if (addTaskInput.value === "") {
+    if (
+      addTaskInput.value === "" ||
+      !historyPattern.test(addTaskInputHistory.value)
+    ) {
       message.classList.remove("ds-none-toggler");
     } else {
       let taskTitle = addTaskInput.value;
-
-      let date = new Date();
-      let now = `${
-        date.getDate() < 10 ? `0${date.geDate()}` : date.getDate()
-      }/${
-        date.getMonth() + 1 < 10
-          ? `0${date.getMonth() + 1}`
-          : date.getMonth() + 1
-      }/${date.getFullYear()}`;
+      let taskHistory = addTaskInputHistory.value;
 
       let taskObj = {
         title: taskTitle,
-        date: now,
+        date: taskHistory,
         isCompleted: false,
       };
       tasksArray.push(taskObj);
@@ -109,7 +112,9 @@ addTaskIcon.addEventListener("click", (e) => {
   const addingTaskConfirmation = document.getElementById(
     "adding-task-confirmation"
   );
+
   const addTaskInput = document.getElementById("add-task-input");
+  const addTaskInputHistory = document.getElementById("add-task-input-history");
   const message = document.querySelector(".message");
 
   addingTaskConfirmation.addEventListener("click", (e) => {
@@ -136,6 +141,7 @@ function deleteTask(index) {
     `<p class="delete-message">
       Are you sure you want to delete <span>"${task.title}"</span> task it's going to be deleted Permanently!
     </p>`,
+    "",
     "",
     `deleting-task-confirmation`,
     "delete-btn",
@@ -167,7 +173,14 @@ function editTask(index) {
       placeholder="Edit task!"
       required
       />`,
-    `<p class="message ds-none-toggler">You must write something here</p>`,
+    `<input
+      type="text"
+      id="edit-task-input-history"
+      class="input-text"
+      placeholder="Edit history: 00/00/0000"
+      required
+      />`,
+    `<p class="message ds-none-toggler">Edit title or History format: 00/00/0000</p>`,
     `editing-task-confirmation`,
     "",
     `Edit Task`
@@ -175,12 +188,16 @@ function editTask(index) {
 
   // Edit task
   function confirmingEditingTask() {
-    if (editTaskInput.value === "") {
+    if (
+      editTaskInput.value === "" ||
+      !historyPattern.test(editTaskInputHistory.value)
+    ) {
       message.classList.remove("ds-none-toggler");
     } else {
       task.title = editTaskInput.value;
-      renderTasks();
+      task.date = editTaskInputHistory.value;
       editTaskInput.value = "";
+
       closeModal();
     }
   }
@@ -190,9 +207,13 @@ function editTask(index) {
   );
 
   const editTaskInput = document.getElementById("edit-task-input");
+  const editTaskInputHistory = document.getElementById(
+    "edit-task-input-history"
+  );
   const message = document.querySelector(".message");
 
   editTaskInput.value = task.title;
+  editTaskInputHistory.value = task.date;
 
   editingTaskConfirmation.addEventListener("click", (e) => {
     confirmingEditingTask();
@@ -219,7 +240,6 @@ function toggleTaskCompletion(index) {
 }
 
 // Delete all tasks
-function deleteAllTasks() {}
 container.addEventListener("click", (e) => {
   if (e.target.id === "delete-all-tasks-btn") {
     customModal(
@@ -229,6 +249,7 @@ container.addEventListener("click", (e) => {
         <span>"${tasksArray.length}"</span> 
         tasks it's going to be deleted Permanently!
       </p>`,
+      "",
       "",
       `deleting-all-tasks-confirmation`,
       "delete-btn",
@@ -252,13 +273,6 @@ container.addEventListener("click", (e) => {
 function saveDateToLocalStorage(key, value) {
   localStorage.setItem(key, JSON.stringify(value));
 }
-
-// Close Modal by pressing escape key
-document.addEventListener("keydown", (evt) => {
-  if (evt.key === "Escape") {
-    closeModal();
-  }
-});
 
 // Dark & Light Theme
 dayMoodToggler.addEventListener("click", (e) => {

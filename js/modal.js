@@ -1,6 +1,14 @@
 const modalContainer = document.getElementById("modal-container");
 
-function customModal(title, body, message = "", btnId, deleteBtnClass = "", btn) {
+function customModal(
+  title,
+  body,
+  input = "",
+  message = "",
+  btnId,
+  deleteBtnClass = "",
+  btn
+) {
   modalContainer.classList.remove("ds-none-toggler");
 
   let modal = `
@@ -12,6 +20,7 @@ function customModal(title, body, message = "", btnId, deleteBtnClass = "", btn)
       </div>
       <div class="modal-content">
       ${body}
+      ${input}
       ${message}
         <div class="modal-btn-container">
           <button id="${btnId}" class="btn ${deleteBtnClass}">${btn}</button>
@@ -24,12 +33,19 @@ function customModal(title, body, message = "", btnId, deleteBtnClass = "", btn)
   modalContainer.innerHTML = modal;
 }
 
+function closeModal() {
+  modalContainer.classList.add("ds-none-toggler");
+}
+
 modalContainer.addEventListener("click", (e) => {
   if (e.target.classList.contains("close-modal")) {
     closeModal();
   }
 });
 
-function closeModal() {
-  modalContainer.classList.add("ds-none-toggler");
-}
+// Close Modal by pressing escape key
+document.addEventListener("keydown", (e) => {
+  if (e.key === "Escape") {
+    closeModal();
+  }
+});

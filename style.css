@@ -205,7 +205,7 @@ button {
 
 .input-text {
   margin-bottom: 1rem;
-  padding: 1rem;
+  padding: .7rem;
   font-size: 1rem;
   outline: none;
   border: 2px solid var(--border-color);
